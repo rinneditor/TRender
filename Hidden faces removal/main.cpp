@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     TGAImage framebuffer(width, height, TGAImage::RGB);
     TGAImage zbuffer(width, height, TGAImage::RGB);
     // 创建模型
-    Model model("/Users/meryrinne/Documents/TRender/Object/diablo3_pose/diablo3_pose.obj");
+    Model model("../Object/diablo3_pose/diablo3_pose.obj");
     // 遍历模型的每一条边
     for (int i = 0; i < model.nfaces(); i++)
     {

@@ -21,7 +21,7 @@ struct PhongShader : public IShader
 
     virtual vec4 vertex(const int face, const int vert)
     {
-        const vec3 v = model.vert(face, vert); // current vertex in object coordinates
+        const vec4 v = model.vert(face, vert); // current vertex in object coordinates
         vec4 gl_Position = ModelView * vec4{v.x, v.y, v.z, 1.};
         tri[vert] = gl_Position.xyz();    // in eye coordinates
         return Perspective * gl_Position; // in clip coordinates
@@ -80,9 +80,9 @@ int main(int argc, char **argv)
 {
     TGAImage framebuffer(width, height, TGAImage::RGB);
     std::vector<std::string> filenames = {
-        "/Users/meryrinne/Documents/TRender/Object/african_head/african_head.obj",
-        "/Users/meryrinne/Documents/TRender/Object/african_head/african_head_eye_inner.obj",
-        "/Users/meryrinne/Documents/TRender/Object/african_head/african_head_eye_outer.obj"};
+        "../Object/african_head/african_head.obj",
+        "../Object/african_head/african_head_eye_inner.obj",
+        "../Object/african_head/african_head_eye_outer.obj"};
     constexpr vec3 eye{-1, 0, 2};   // camera position
     constexpr vec3 center{0, 0, 0}; // camera direction
     constexpr vec3 up{0, 1, 0};     // camera up vector

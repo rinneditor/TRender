@@ -170,7 +170,7 @@ int main()
         -std::numeric_limits<double>::infinity());
 
     Model model(
-        "/Users/meryrinne/Documents/TRender/Object/diablo3_pose/diablo3_pose.obj");
+        "../Object/diablo3_pose/diablo3_pose.obj");
 
     for (int i = 0; i < model.nfaces(); ++i)
     {

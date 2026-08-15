@@ -99,7 +99,7 @@ Model::Model(const std::string &filename)
         std::string texfile = filename.substr(0, dot) + suffix;
         std::cerr << "texture file " << texfile << " loading " << (img.read_tga_file(texfile.c_str()) ? "ok" : "failed") << std::endl;
     };
-    load_texture("_nm.tga", normalmap);
+    load_texture("_nm_tangent.tga", normalmap);
     load_texture("_diffuse.tga", diffusemap);
     load_texture("_spec.tga", specularmap);
 }
@@ -113,19 +113,19 @@ int Model::nnormals() const
 {
     return (int)norms_.size();
 }
-const vec<4>& Model::vert(int i) const
+const vec<4> Model::vert(int i) const
 {
     return verts_[i];
 }
-const vec<4>& Model::normal(int i) const
+const vec<4> Model::normal(int i) const
 {
     return norms_[i];
 }
-const vec4& Model::vert(const int iface, const int nthvert) const
+const vec4 Model::vert(const int iface, const int nthvert) const
 {
     return verts_[faces_[iface][nthvert]];
 }
-const vec4& Model::normal(const int iface, const int nthvert) const
+const vec4 Model::normal(const int iface, const int nthvert) const
 {
     return norms_[normfaces_[iface][nthvert]];
 }
@@ -134,6 +134,12 @@ const vec4 Model::normal(const vec2 &uv) const
     TGAColor c = normalmap.get(uv[0] * normalmap.width(), uv[1] * normalmap.height());
     // BGRA
     return vec4{(double)c[2], (double)c[1], (double)c[0], 0} * 2. / 255. - vec4{1, 1, 1, 0};
+}
+const vec4 Model::normal_tangent(const vec2 &uv) const
+{
+    TGAColor c = normalmap.get(uv[0] * normalmap.width(), uv[1] * normalmap.height());
+    // BGRA
+    return normalized(vec4{(double)c[2], (double)c[1], (double)c[0], 0} * 2. / 255. - vec4{1, 1, 1, 0});
 }
 const TGAImage &Model::diffuse() const
 {
@@ -152,7 +158,7 @@ const std::vector<int>& Model::face(int idx) const
 {
     return faces_[idx];
 }
-const vec2 &Model::uv(
+const vec2 Model::uv(
     const int face,
     const int vert) const
 {

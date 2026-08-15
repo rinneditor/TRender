@@ -74,6 +74,14 @@ add_executable(MoreData
 add_executable(MoreData_homework
     "More data!/homework.cpp"
 )
+# Tangent space normal mapping
+add_executable(TangentSpaceNormalMapping
+    "Tangent space normal mapping/main.cpp"
+)
+# Shadow mapping
+add_executable(ShadowMapping
+    "Shadow mapping/main.cpp"
+)
 
 target_link_libraries(bresenham PRIVATE tgaimage model)
 target_link_libraries(bresenham_homework PRIVATE tgaimage model)
@@ -87,3 +95,5 @@ target_link_libraries(Shading PRIVATE tgaimage model our_gl)
 target_link_libraries(Shading_homework PRIVATE tgaimage model our_gl)
 target_link_libraries(MoreData PRIVATE tgaimage model our_gl)
 target_link_libraries(MoreData_homework PRIVATE tgaimage model our_gl)
+target_link_libraries(TangentSpaceNormalMapping PRIVATE tgaimage model our_gl)
+target_link_libraries(ShadowMapping PRIVATE tgaimage model our_gl)

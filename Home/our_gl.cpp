@@ -87,7 +87,12 @@ void rasterize(const Triangle &clip, const IShader &shader, TGAImage &framebuffe
 
             ZBuffer[index] = z;
             // 调用片段着色器
-            auto [discard, color] = shader.fragment(bc);
+            vec3 bar = {
+                bc.x / clip[0].w,
+                bc.y / clip[1].w,
+                bc.z / clip[2].w};
+            bar = bar / (bar.x + bar.y + bar.z);
+            auto [discard, color] = shader.fragment(bar);
             if (!discard)
                 framebuffer.set(x, y, color);
         }

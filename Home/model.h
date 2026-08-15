@@ -27,18 +27,19 @@ struct Model {
     int nnormals() const;
     int nfaces() const;
     // 获取第i个顶点
-    const vec<4>& vert(int i) const;
+    const vec<4> vert(int i) const;
     // 获取第i个法线
-    const vec<4>& normal(int i) const;
-    const vec2 &uv(int face, int vert) const;
+    const vec<4> normal(int i) const;
+    const vec2 uv(int face, int vert) const;
     // 获取第idx个面的顶点索引
     const std::vector<int>& face(int idx) const;
     // 获取第idx个面的第nthvert个顶点
-    const vec4& vert(const int iface, const int nthvert) const;
+    const vec4 vert(const int iface, const int nthvert) const;
     // 获取第idx个面的第nthvert个顶点法线
-    const vec4& normal(const int iface, const int nthvert) const;
+    const vec4 normal(const int iface, const int nthvert) const;
     // 根据纹理坐标获取法线
     const vec4 normal(const vec2 &uv) const;
     const TGAImage &diffuse() const;
     const TGAImage &specular() const;
+    const vec4 normal_tangent(const vec2 &uv) const;
 };

@@ -134,7 +134,7 @@ void triangle(TGAImage &framebuffer, int x0, int y0, int x1, int y1, int x2, int
     }
 }
 // 缩放
-std::tuple<int, int> project(vec3 v)
+std::tuple<int, int> project(vec4 v)
 {
     return {(v.x + 1.) * width / 2,
             (v.y + 1.) * height / 2};
@@ -145,7 +145,7 @@ int main(int argc, char **argv)
     // 创建画布
     TGAImage framebuffer(width, height, TGAImage::RGB);
     // 创建模型
-    Model model("/Users/meryrinne/Documents/TRender/Object/diablo3_pose/diablo3_pose.obj");
+    Model model("../Object/diablo3_pose/diablo3_pose.obj");
     // 遍历模型的每一条边
     for (int i = 0; i < model.nfaces(); i++)
     {
@@ -154,9 +154,9 @@ int main(int argc, char **argv)
         int v1 = face[1];
         int v2 = face[2];
         // 获取顶点坐标
-        vec3 p0 = model.vert(v0);
-        vec3 p1 = model.vert(v1);
-        vec3 p2 = model.vert(v2);
+        vec4 p0 = model.vert(v0);
+        vec4 p1 = model.vert(v1);
+        vec4 p2 = model.vert(v2);
         TGAColor rnd;
         for (int c = 0; c < 3; c++)
             rnd[c] = std::rand() % 255;

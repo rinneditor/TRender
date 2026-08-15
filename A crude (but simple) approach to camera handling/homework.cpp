@@ -104,7 +104,7 @@ int main(int argc, char **argv)
         // 负无穷大
         -std::numeric_limits<double>::infinity());
     // 创建模型
-    Model model("/Users/meryrinne/Documents/TRender/Object/diablo3_pose/diablo3_pose.obj");
+    Model model("../Object/diablo3_pose/diablo3_pose.obj");
     // 遍历模型的每一条边
     for (int i = 0; i < model.nfaces(); i++)
     {

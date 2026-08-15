@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     // 创建画布
     TGAImage framebuffer(width, height, TGAImage::RGB);
     // 创建模型
-    Model model("/Users/meryrinne/Documents/TRender/Object/african_head/african_head_eye_outer.obj");
+    Model model("../Object/african_head/african_head_eye_outer.obj");
     // 遍历模型的每一条边
     for (int i = 0; i < model.nfaces(); i++){
         const std::vector<int>& face = model.face(i);
