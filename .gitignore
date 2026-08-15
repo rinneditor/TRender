@@ -1,0 +1,18 @@
+# CMake build products
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Program output
+output/
+
+# macOS
+.DS_Store
+
+# VS Code workspace settings
+.vscode/
+
