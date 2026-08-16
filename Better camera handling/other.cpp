@@ -83,8 +83,8 @@ int main(int argc, char **argv)
             vec4 clip[3];
             for (int d : {0, 1, 2})
             { // assemble the primitive
-                vec3 v = model.vert(i, d);
-                clip[d] = Perspective * ModelView * vec4{v.x, v.y, v.z, 1.};
+                vec4 v = model.vert(i, d);
+                clip[d] = Perspective * ModelView * v;
             }
             TGAColor rnd;
             for (int c = 0; c < 3; c++)

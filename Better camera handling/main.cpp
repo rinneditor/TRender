@@ -66,7 +66,7 @@ void rasterize(
         clip[1] / clip[1].w,
         clip[2] / clip[2].w};
 
-    const vec2 screen[3] = {
+    const vec3 screen[3] = {
         (Viewport * ndc[0]).xyz(),
         (Viewport * ndc[1]).xyz(),
         (Viewport * ndc[2]).xyz()};
@@ -177,8 +177,8 @@ int main()
         vec4 clip[3];
         for (int d : {0, 1, 2})
         {
-            const vec3 v = model.vert(i, d);
-            clip[d] = Perspective * ModelView * vec4{v.x, v.y, v.z, 1.0};
+            const vec4 v = model.vert(i, d);
+            clip[d] = Perspective * ModelView * v;
         }
 
         TGAColor randomColor{};
