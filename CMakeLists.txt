@@ -89,6 +89,10 @@ add_executable(Indirect
 add_executable(Indirect_homework
     "Indirect lighting/homework.cpp"
 )
+# Bonus: toon shading
+add_executable(BonusToonShading
+    "Bonustoonshading/main.cpp"
+)
 
 
 target_link_libraries(bresenham PRIVATE tgaimage model)
@@ -107,3 +111,4 @@ target_link_libraries(TangentSpaceNormalMapping PRIVATE tgaimage model our_gl)
 target_link_libraries(ShadowMapping PRIVATE tgaimage model our_gl)
 target_link_libraries(Indirect PRIVATE tgaimage model our_gl)
 target_link_libraries(Indirect_homework PRIVATE tgaimage model our_gl)
+target_link_libraries(BonusToonShading PRIVATE tgaimage model our_gl)

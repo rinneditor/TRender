@@ -36,7 +36,7 @@ void lookat(const vec3 eye, const vec3 center, const vec3 up)
 }
 void zbuffer(const int width, const int height)
 {
-    ZBuffer = std::vector<double>(width * height, -std::numeric_limits<double>::infinity());
+    ZBuffer = std::vector<double>(width * height, -1000.);
 }
 void rasterize(const Triangle &clip, const IShader &shader, TGAImage &framebuffer)
 {

@@ -131,10 +131,14 @@ int main(int argc, char **argv) {
                 vec2 sum;
                 for (int j = -1; j <= 1; ++j) {
                     for (int i = -1; i <= 1; ++i) {
+                        double depth = eBuffer[(x + i) + (y + j) * width];
+
+                        if (!std::isfinite(depth))
+                            depth = -1.0;
                         constexpr int Gx[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
                         constexpr int Gy[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
-                        sum = sum + vec2{Gx[j + 1][i + 1] * eBuffer[x + i + (y + j) * width],
-                                         Gy[j + 1][i + 1] * eBuffer[x + i + (y + j) * width]};
+                        sum = sum + vec2{Gx[j + 1][i + 1] * depth,
+                                         Gy[j + 1][i + 1] * depth};
                     }
                 }
                 if (norm(sum) > threshold)
