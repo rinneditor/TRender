@@ -210,9 +210,7 @@ int main(int argc, char **argv)
             }
         }
         maskimg.write_tga_file("Shadow mapping/mask.tga");
-    }
-
-    {
+        
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
@@ -234,4 +232,5 @@ int main(int argc, char **argv)
         }
         framebuffer.write_tga_file("Shadow mapping/diablo3_shadow.tga");
     }
+
 }

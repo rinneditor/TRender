@@ -82,6 +82,14 @@ add_executable(TangentSpaceNormalMapping
 add_executable(ShadowMapping
     "Shadow mapping/main.cpp"
 )
+# Indirect lighting
+add_executable(Indirect
+    "Indirect lighting/main.cpp"
+)
+add_executable(Indirect_homework
+    "Indirect lighting/homework.cpp"
+)
+
 
 target_link_libraries(bresenham PRIVATE tgaimage model)
 target_link_libraries(bresenham_homework PRIVATE tgaimage model)
@@ -97,3 +105,5 @@ target_link_libraries(MoreData PRIVATE tgaimage model our_gl)
 target_link_libraries(MoreData_homework PRIVATE tgaimage model our_gl)
 target_link_libraries(TangentSpaceNormalMapping PRIVATE tgaimage model our_gl)
 target_link_libraries(ShadowMapping PRIVATE tgaimage model our_gl)
+target_link_libraries(Indirect PRIVATE tgaimage model our_gl)
+target_link_libraries(Indirect_homework PRIVATE tgaimage model our_gl)
