@@ -100,9 +100,9 @@ int main(int argc, char **argv) {
                         bool outside = p.x < 0 || p.x >= shadowmapw || p.y < 0 || p.y >= shadowmaph;
 
                         if (!outside) {
-                            const int shadowIndex = static_cast<int>(p.x) + static_cast<int>(p.y) * shadowmapw;
+                            const int si = static_cast<int>(p.x) + static_cast<int>(p.y) * shadowmapw;
 
-                            lit = p.z > ZBuffer[shadowIndex] - bias;
+                            lit = p.z > ZBuffer[si] - bias;
                         }
                     }
 
