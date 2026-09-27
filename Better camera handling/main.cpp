@@ -43,9 +43,9 @@ void lookat(const vec3 eye, const vec3 center, const vec3 up)
                    {m.x, m.y, m.z, 0},
                    {n.x, n.y, n.z, 0},
                    {0, 0, 0, 1}}} *
-        mat<4, 4>{{{1, 0, 0, -center.x},
-                   {0, 1, 0, -center.y},
-                   {0, 0, 1, -center.z},
+        mat<4, 4>{{{1, 0, 0, -eye.x},
+                   {0, 1, 0, -eye.y},
+                   {0, 0, 1, -eye.z},
                    {0, 0, 0, 1}}};
 }
 
@@ -192,7 +192,7 @@ int main()
     const TGAImage depthImage = visualize_depth(zbuffer);
 
     std::filesystem::create_directories("Better");
-    framebuffer.write_tga_file("Better/diablo3_color.tga");
-    depthImage.write_tga_file("Better/diablo3_depth.tga");
+    framebuffer.write_tga_file("Better/diablo3_color_e.tga");
+    depthImage.write_tga_file("Better/diablo3_depth_e.tga");
     return 0;
 }

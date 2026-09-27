@@ -56,7 +56,7 @@ struct PhongShader : public IShader
         // 每个点法线贴图
         const vec2 uv = bar.x * uvs[0] + bar.y * uvs[1] + bar.z * uvs[2];
         const vec4 uv_n = normalized(
-            TBN.transpose() * model.normal_tangent(uv));
+            TBN.transpose() * model.normal(uv));
 
         // 漫反射光照强度
         const double diffuse = 1. * std::max(0.0, uv_n * l);
@@ -83,11 +83,11 @@ struct PhongShader : public IShader
 int main(int argc, char **argv)
 {
     TGAImage framebuffer(width, height, TGAImage::RGB);
-    // std::vector<std::string> filenames = {
-    //     "../Object/african_head/african_head.obj",
-    //     "../Object/african_head/african_head_eye_inner.obj"};
     std::vector<std::string> filenames = {
-        "../Object/diablo3_pose/diablo3_pose.obj"};
+        "../Object/african_head/african_head.obj",
+        "../Object/african_head/african_head_eye_inner.obj"};
+    // std::vector<std::string> filenames = {
+    //     "../Object/diablo3_pose/diablo3_pose.obj"};
     constexpr vec3 eye{-1, 0, 2};   // camera position
     constexpr vec3 center{0, 0, 0}; // camera direction
     constexpr vec3 up{0, 1, 0};     // camera up vector
@@ -109,5 +109,5 @@ int main(int argc, char **argv)
         }
     }
     std::filesystem::create_directories("Tangent space normal mapping");
-    framebuffer.write_tga_file("Tangent space normal mapping/diablo3.tga");
+    framebuffer.write_tga_file("Tangent space normal mapping/head.tga");
 }

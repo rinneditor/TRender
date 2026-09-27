@@ -41,6 +41,7 @@ struct PhongShader : public IShader
 
         // 每个点法线贴图
         const vec2 uv = bar.x * uvs[0] + bar.y * uvs[1] + bar.z * uvs[2];
+        // 根据纹理坐标获取法线
         const vec4 uv_n = normalized(
             M * model.normal(uv));
         // 漫反射光照强度
@@ -57,7 +58,7 @@ struct PhongShader : public IShader
                 std::max(0.0, r.z),
                 shininess) * specularWeight;
         }
-        // 纹理采样
+        // 颜色采样
         TGAColor color = sample2D(model.diffuse(), uv);
 
         // 贴图颜色 ×（环境光 + 漫反射 + 白色镜面高光）
